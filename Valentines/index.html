@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>A Special Letter ❤️</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Indie+Flower&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div id="confetti-container"></div>
+
+    <div class="mail-wrapper">
+        <div id="envelope" onclick="openLetter()">
+            <div class="envelope-flap"></div>
+            <div class="heart-seal">❤️</div>
+            <div class="envelope-card">
+                <p class="from-to">From: Yohan</p>
+                <p class="from-to">To: Sham</p>
+                <span>(Tap to open)</span>
+            </div>
+        </div>
+
+        <div id="signature-text">
+            <h1 style="padding-top: 50px;">Made this just for you, Sweetheart.</h1>
+            <p style="color: #ffa9b9;"><b>Love, Yohan</b></p>
+        </div>
+
+        <div class="notebook-container hidden" id="notebook">
+            <div class="spine"></div> <section class="page active" id="page1">
+                <div class="notebook-paper">
+                    <h1>Hi Beautiful...</h1>
+                    <p>I wanted to put a few thoughts into words for you today.
+                        Please read slowly baby, hehehehehehehehe.
+                        We may not have a date on the exact day of Valentine's... 
+                        I hope this gift I've made for you makes up for it.
+                        We'd still enjoy the day like we're together.
+                        Being with you makes me think of the most beautiful words, 
+                        ones I wouldn't even have thought of if I hadn't met you. 
+                        You are the best thing that ever happened to me.
+                        At times... I find myself stuck with my own thoughts, how did we get here?
+                        One day I'm alone and the next day I have the most beautiful girl waiting for me.    
+                    </p>
+                </div>
+            </section>
+
+            <section class="page" id="page2">
+                <div class="notebook-paper">
+                    <h2>The Little Things</h2>
+                    <p>Whether it's the way you smile or how you make me laugh, every moment with you is special.
+                        You make every day special. I wouldn't change anything, I'd choose you every single day.
+                        I love your eyes when you laugh, I see the stars in them. They look like the moon to me, I'm forever thankful I get to see that glow every night.
+                        Your voice is music to my ears, the most beautiful symphony I have ever heard.
+                        I'm lucky to be loved by you. You are special to me, baby. It's the little things, that's what makes me love you so so so much. 
+                    </p>
+                </div>
+            </section>
+
+            <section class="page" id="page3">
+                <div class="notebook-paper">
+                    <h2>A Thank You</h2>
+                    <p>Thank you for being you. You make my life so much brighter just by being in it.
+                        I know the distance can be tough, and I hate that I can't reach out and hold your hand right now. 
+                        But every mile between us is just a reminder of how much you're worth waiting for. 
+                        You are my home, and no matter where I am, my heart always finds its way back to you.
+                        We've had beautiful dates together but I find myself dreaming of our future constantly,
+                        the dates we haven't gone on yet, the places we'll travel to, 
+                        and the simple mornings where I don't have to say 'goodbye' through a screen. 
+                        Thank you for choosing me every single day. I promise to keep choosing you, too.   
+                    </p>
+                </div>
+            </section>
+
+            <section class="page" id="page4">
+                <div class="notebook-paper">
+                    <h2>One Last Thing</h2>
+                    <p>I have a question for you...
+                        I've asked you this before but I'll never get tired of asking you kahit na matagal na tayo.  
+                    </p>
+                </div>
+            </section>
+
+            <section class="page" id="page5">
+                <div class="content">
+                    <h1 class="question">Will you be my Valentine?</h1>
+                    <div id="main-ui">
+                        <div class="btn-group">
+                            <button id="yesBtn" onclick="celebrate()">YES!</button>
+                            <button id="noBtn" onclick="moveNoButton()" onmouseover="moveNoButton()">No</button>
+                        </div>
+                    </div>
+                    <div id="success-message" class="hidden">
+                        <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpueXN2ajR6Ym5hZzR6Ym5hZzR6Ym5hZzR6Ym5hZzR6Ym5hZyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/9G0AdBbVrkV3O/giphy.gif" width="120">
+                        <h2>I love you so much, my forever Valentine!</h2>
+                    </div>
+                </div>
+            </section>
+
+
+        </div>
+    </div>
+
+    <button id="globalNextBtn" class="hidden" onclick="handleNext()">Next ➔</button>
+
+    <button id="muteBtn" class="hidden" onclick="toggleMute()">
+        <span id="muteIcon">🔊</span>
+    </button>
+
+    <script src="script.js"></script>
+
+    <audio id="bgMusic" loop>
+    <source src="song.mp3" type="audio/mpeg">
+    </audio>
+</body>
+</html>

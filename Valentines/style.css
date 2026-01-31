@@ -1,0 +1,336 @@
+:root {
+    --pink: #ffa9b9;
+    --paper: #fffef0;
+}
+
+* {
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffe7ec;
+    font-family: 'Indie Flower', cursive;
+    /* Changed overflow to allow the button to show if it goes past the viewport slightly */
+    overflow-x: hidden; 
+    overflow-y: auto; 
+    text-rendering: optimizeLegibility;
+}
+
+/* --- ENVELOPE INTRO STYLES --- */
+.mail-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+    position: relative; /* Context for the button */
+    flex-direction: column;
+}
+
+#envelope {
+    width: 280px;
+    height: 180px;
+    background: #ffffff;
+    border: 2px solid var(--pink);
+    position: relative;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: all 0.6s ease-in-out;
+    z-index: 200;
+    overflow: visible;
+}
+
+.envelope-flap {
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    width: 0;
+    height: 0;
+    border-left: 142px solid transparent;
+    border-right: 142px solid transparent;
+    border-top: 90px solid var(--pink);
+    z-index: 3;
+    transform-origin: top center;
+    transition: transform 0.6s ease-in-out;
+}
+
+#envelope.opening .envelope-flap {
+    transform: rotateX(180deg);
+}
+
+.heart-seal {
+    position: absolute;
+    top: 70px;
+    font-size: 2rem;
+    z-index: 4;
+    transition: all 0.6s ease-in-out;
+}
+
+#envelope.opening .heart-seal {
+    opacity: 0;
+    transform: scale(0);
+}
+
+#envelope.opening .heart-seal {
+    opacity: 0;
+    transform: scale(0);
+}
+
+.envelope-card {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.envelope-card .from-to {
+    font-size: 0.95rem;
+    margin: 0;
+    color: #333;
+    font-family: 'Indie Flower', cursive;
+}
+
+.envelope-card .from-to:first-child {
+    text-align: left;
+}
+
+.envelope-card .from-to:last-of-type {
+    text-align: right;
+}
+
+.envelope-card span {
+    display: block;
+    font-size: 0.85rem;
+    color: #999;
+    margin-top: 10px;
+    font-style: italic;
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    text-align: center;
+}
+
+#envelope.fade-out {
+    opacity: 0;
+    transform: scale(0.5) translateY(-100px);
+    pointer-events: none;
+}
+
+#signature-text {
+    text-align: center;
+    font-family: 'Dancing Script', cursive;
+    transition: opacity 0.6s ease-in-out;
+    z-index: 150;
+}
+
+#signature-text.fade-out {
+    opacity: 0;
+    pointer-events: none;
+}
+
+#signature-text.hidden {
+    display: none;
+}
+
+/* --- NOTEBOOK STYLES --- */
+.notebook-container {
+    width: 90%;
+    max-width: 350px;
+    height: 80vh;
+    max-height: 550px;
+    position: relative;
+    transform-style: preserve-3d;
+    perspective: 1500px;
+    margin-bottom: 20px; /* Room for the button */
+}
+
+.page {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: var(--paper);
+    background-image: linear-gradient(to bottom, #bee1e6 1px, transparent 1px);
+    background-size: 100% 1.6rem;
+    padding: 15px; /* Reduced padding to give more room */
+    border-radius: 15px;
+    border-left: 3px double #ff99ac;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centers the notebook paper vertically */
+    align-items: center;
+    text-align: center;
+    transition: transform 1s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transform-origin: left center;
+    backface-visibility: hidden;
+    overflow: hidden; /* Prevents internal scrolling */
+    z-index: 1;
+}
+
+.page.exit {
+    transform: rotateY(-160deg) translateZ(0);
+    z-index: 5;
+}
+
+.page.active {
+    z-index: 10;
+}
+
+.notebook-paper {
+    width: 100%;
+    max-height: 95%; /* Prevents overflow at bottom */
+    padding: 1rem 0.8rem; /* Balanced padding */
+    overflow-y: auto; /* Allow scroll if content is too long */
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centers content vertically */
+    align-items: center;
+}
+
+/* Hide scrollbar but keep functionality */
+.notebook-paper::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
+
+h1 { 
+    font-size: 1.8rem; 
+    color: var(--pink); 
+    font-family: 'Dancing Script', cursive; 
+    margin-top: 0; /* Removes default top margin */
+    margin-bottom: 10px;
+}
+
+h2 { 
+    font-size: 1.4rem; 
+    margin-top: 0; /* Removes default top margin */
+    margin-bottom: 8px; 
+}
+
+p { 
+    font-size: 1.05rem; 
+    margin: 5px 0; 
+    color: #444; 
+    line-height: 1.4; /* Tighter line height to fit more text without scrolling */
+}
+
+/* --- THE GLOBAL NEXT BUTTON (FIXED POSITION) --- */
+#globalNextBtn {
+    position: fixed;
+    /* This places it at the very bottom of the iPhone screen */
+    bottom: 40px; 
+    left: 50%;
+    transform: translateX(-50%);
+    
+    /* Look and Feel */
+    background: var(--pink);
+    color: white;
+    padding: 12px 45px;
+    border-radius: 30px;
+    font-family: 'Indie Flower', cursive;
+    font-size: 1.2rem;
+    cursor: pointer;
+    
+    /* Ensure it stays ABOVE the pages */
+    z-index: 9999; 
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    transition: all 0.3s ease;
+}
+
+#globalNextBtn.hidden {
+    display: none !important;
+}
+
+#globalNextBtn:active {
+    transform: translateX(-50%) scale(0.9);
+}
+
+/* --- MUTE BUTTON (FIXED POSITION BOTTOM RIGHT) --- */
+#muteBtn {
+    position: fixed;
+    bottom: 40px;
+    right: 20px;
+    background: var(--pink);
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    z-index: 9999;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#muteBtn.hidden {
+    display: none !important;
+}
+
+#muteBtn:active {
+    transform: scale(0.9);
+}
+
+#muteIcon {
+    font-size: 1.5rem;
+}
+
+/* --- BUTTONS & SUCCESS --- */
+.btn-group {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+    justify-content: center;
+    width: 100%;
+}
+
+button {
+    background: var(--pink);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+#noBtn {
+    background: #94a3b8;
+    position: relative;
+    z-index: 100;
+}
+
+.hidden { display: none !important; }
+
+#confetti-container {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 1000;
+}
+
+/* Mobile optimization */
+@media (max-width: 400px) {
+    h1 { font-size: 1.5rem; }
+    p { font-size: 1rem; }
+    .notebook-container { height: 75vh; }
+}
